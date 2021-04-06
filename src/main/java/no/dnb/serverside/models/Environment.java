@@ -6,7 +6,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name="ENVIRONMENT")
+@Table(name="ENVIRONMENTS")
 @Data
 public class Environment {
 
@@ -15,9 +15,8 @@ public class Environment {
     private long id = -1;
 
     private String description;
-    private double price;
-    private long inStock;
-
+    //private double price;
+   // private long inStock;
 
     @OneToMany(mappedBy="environment", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     @JsonManagedReference
@@ -26,15 +25,15 @@ public class Environment {
     public Environment(){}
 
     public Environment(String description, double price, long inStock){
-        this(-1, description, price, inStock);
+        this(-1, description);
 
     }
 
-    public Environment(long id, String description, double price, long inStock) {
+    public Environment(long id, String description) {
         this.id = id;
         this.description = description;
-        this.price = price;
-        this.inStock = inStock;
+        //this.price = price;
+        //this.inStock = inStock;
     }
 
  }

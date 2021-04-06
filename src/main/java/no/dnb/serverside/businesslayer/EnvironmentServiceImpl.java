@@ -18,9 +18,9 @@ public class EnvironmentServiceImpl implements EnvironmentService {
     public EnvironmentServiceImpl(@Qualifier("dataRepositoryH2") EnvironmentRepository repository) {
         this.repository = repository;
 
-        repository.create(new Environment(-1,"Development",400.00,3));
-        repository.create(new Environment(-1,"Disaster Recovery",300,6));
-        repository.create(new Environment(-1,"Production",43,3));
+        repository.create(new Environment(-1,"Development"));
+        repository.create(new Environment(-1,"Disaster Recovery"));
+        repository.create(new Environment(-1,"Production"));
 
     }
     @Override

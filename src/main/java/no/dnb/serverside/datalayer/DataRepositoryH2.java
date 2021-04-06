@@ -40,8 +40,6 @@ public class DataRepositoryH2 implements EnvironmentRepository {
         Environment p = entityManager.find(Environment.class, id);
         if(p!=null) {
             p.setDescription(p.getDescription());
-            p.setPrice(p.getPrice());
-            p.setInStock(p.getInStock());
             return true;
         }
         else
