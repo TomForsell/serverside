@@ -31,6 +31,14 @@ public class ConfigData {
 
     public ConfigData() { }
 
+    public ConfigData(long configID, Environment environment, String keyName, String value, Timestamp ts) {
+        this.configID = configID;
+        this.environment = environment;
+        this.keyName = keyName;
+        this.value = value;
+        this.ts = ts;
+    }
+
     public long getConfigID() {
         return configID;
     }
