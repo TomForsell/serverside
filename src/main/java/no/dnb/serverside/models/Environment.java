@@ -9,7 +9,6 @@ import java.util.List;
 @Table(name="ENVIRONMENTS")
 @Data
 public class Environment {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id = -1;
@@ -24,7 +23,8 @@ public class Environment {
 
     public Environment(){}
 
-    public Environment(long id, String description) {
+
+    public Environment(String description) {
         this.id = id;
         this.description = description;
         }

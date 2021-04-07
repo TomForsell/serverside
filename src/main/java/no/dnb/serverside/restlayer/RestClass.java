@@ -43,33 +43,43 @@ public class RestClass {
         boolean pr= environmentService.delete(id);
         return ResponseEntity.ok().body(pr);
     }
-    @PostMapping(value="/create/{Environment e}", produces ={"application/json","application/xml"})
-    public ResponseEntity<Environment> create(@PathVariable Environment e){
-        Environment re = environmentService.create(e);
-        if(re.equals(e)){
-            return ResponseEntity.ok().build();
-        }
-        else
-        {
-            return ResponseEntity.notFound().build();
-        }
+    @PostMapping(value="/create/", produces ={"application/json","application/xml"})
+    public ResponseEntity<String> create(@RequestBody String description){
+        Environment re = environmentService.create(description);
+        return ResponseEntity.ok().build();
     }
-    @PutMapping(
-            value="/addConfigForEnvironment/{ENVIRONMENT_ID}",
-            consumes={"application/json","application/xml"},
-            produces={"application/json","application/xml"}
-    )
-    public ResponseEntity<Void> addConfigForEnvironment(@PathVariable long configID, @RequestBody ConfigData configData) {
-        Optional<ConfigData> environment = configDataRepository.findById(configID);
 
-        if (environment.isEmpty()) {
+    @PutMapping(
+            value="/save/{id}", produces={"application/json","application/xml"}
+    )
+    public ResponseEntity<Void> save(@PathVariable long environmentID, @RequestBody String keyName, String configValue ) {
+        Environment re = environmentService.read(environmentID);
+        ConfigData newConfigData = new ConfigData(re,keyName,configValue);
+        configDataRepository.save(newConfigData);
+        return ResponseEntity.ok().build();
+
+    }
+
+
+/*
+    @PutMapping(
+            value = {"/addConfigForEnvironment/{environmentID}"},
+            consumes = {"application/json", "application/xml"},
+            produces = {"application/json", "application/xml"}
+    )
+    public ResponseEntity<Void> addConfigForEnvironment(@PathVariable long environmentID, @RequestBody ConfigData configData) {
+        Environment environment = environmentService.read(environmentID);
+        if (environment==null) {
             return ResponseEntity.notFound().build();
-        }
-        else {
-            configData.setEnvironment(environment.get().getEnvironment());
-            configDataRepository.save(configData);
+        } else {
+            configData.setEnvironment(environment);
+            this.configDataRepository.save(configData);
             return ResponseEntity.ok().build();
         }
     }
+
+ */
 
 }
+
+

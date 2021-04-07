@@ -135,9 +135,5 @@ public class SeedDB {
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
                 new Object[]{4,"Wifi connection :","daddddddffd.ddd.dddd",new Timestamp(date.getTime())});
 
-
-
-
-
     }
 }

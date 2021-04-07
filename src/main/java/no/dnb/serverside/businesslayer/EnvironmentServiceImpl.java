@@ -31,8 +31,9 @@ public class EnvironmentServiceImpl implements EnvironmentService {
         return repository.getAllEnvironments();
     }
     @Override
-    public Environment create(Environment p) {
-        return repository.create(p);
+    public Environment create(String description) {
+        Environment myEnvironment = new Environment(description);
+        return repository.create(myEnvironment);
     }
     @Override
     public Environment read(long id) {

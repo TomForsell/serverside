@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 
 @EqualsAndHashCode
@@ -27,16 +28,17 @@ public class ConfigData {
     private String configValue;
     private Timestamp ts;
 
+    private Date date = new Date();
     public ConfigData() { }
-/*
-    public ConfigData(long configID, Environment environment, String keyName, String value, Timestamp ts) {
+
+    public ConfigData(Environment environment, String keyName, String configValue) {
         this.configID = configID;
         this.environment = environment;
         this.keyName = keyName;
-        this.value = value;
-        this.ts = ts;
+        this.configValue = configValue;
+        this.ts = new Timestamp(date.getTime());
     }
-*/
+
     public long getConfigID() {
         return configID;
     }

@@ -6,7 +6,7 @@ import java.util.Collection;
 
 public interface EnvironmentService {
     Collection<Environment> getAllEnvironments();
-    Environment create(Environment p);
+    Environment create(String description);
     Environment read(long id);
     boolean update(long id,String description);
     boolean delete(long id);
