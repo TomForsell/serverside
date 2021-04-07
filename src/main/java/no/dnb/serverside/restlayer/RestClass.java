@@ -55,11 +55,11 @@ public class RestClass {
         }
     }
     @PutMapping(
-            value="/addConfigDataforEnvironments/{ENVIRONMENT_ID}",
+            value="/addConfigForEnvironment/{ENVIRONMENT_ID}",
             consumes={"application/json","application/xml"},
             produces={"application/json","application/xml"}
     )
-    public ResponseEntity<Void> addCOnfigForEnvironment(@PathVariable long configID, @RequestBody ConfigData configData) {
+    public ResponseEntity<Void> addConfigForEnvironment(@PathVariable long configID, @RequestBody ConfigData configData) {
         Optional<ConfigData> environment = configDataRepository.findById(configID);
 
         if (environment.isEmpty()) {
