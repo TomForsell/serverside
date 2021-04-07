@@ -36,10 +36,10 @@ public class DataRepositoryH2 implements EnvironmentRepository {
 
     @Transactional
     @Override
-    public boolean update(long id) {
+    public boolean update(long id, String description) {
         Environment p = entityManager.find(Environment.class, id);
         if(p!=null) {
-            p.setDescription(p.getDescription());
+            p.setDescription(description);
             return true;
         }
         else

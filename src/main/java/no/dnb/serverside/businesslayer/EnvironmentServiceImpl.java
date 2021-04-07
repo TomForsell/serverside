@@ -39,8 +39,8 @@ public class EnvironmentServiceImpl implements EnvironmentService {
        return  repository.read(id);
     }
     @Override
-    public boolean update(long id) {
-        if(repository.update(id)){
+    public boolean update(long id,String description) {
+        if(repository.update(id,description)){
             return true;
         }
         else{

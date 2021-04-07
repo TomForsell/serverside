@@ -8,7 +8,7 @@ public interface EnvironmentService {
     Collection<Environment> getAllEnvironments();
     Environment create(Environment p);
     Environment read(long id);
-    boolean update(long id);
+    boolean update(long id,String description);
     boolean delete(long id);
 
 }

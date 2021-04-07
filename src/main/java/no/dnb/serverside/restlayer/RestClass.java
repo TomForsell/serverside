@@ -23,7 +23,7 @@ public class RestClass {
     private ConfigDataRepository configDataRepository;
 
     @GetMapping(value="/all", produces={"application/json","application/xml"})
-    public ResponseEntity<Collection<Environment>>getAllProducts() {
+    public ResponseEntity<Collection<Environment>>getAllEnvironments() {
         Collection<Environment> environments = environmentService.getAllEnvironments();
         return ResponseEntity.ok().body(environments);
     }
@@ -34,13 +34,13 @@ public class RestClass {
     }
 
     @PutMapping(value="/update/{id}", produces={"application/json","application/xml"})
-    public ResponseEntity <Boolean> update(@PathVariable long id) {
-        boolean result = environmentService.update(id);
+    public ResponseEntity <Boolean> update(@PathVariable long id,@RequestBody String description) {
+        boolean result = environmentService.update(id,description);
         return ResponseEntity.ok().body(result);
     }
     @DeleteMapping(value="/delete/{id}", produces={"application/json","application/xml"})
-    public ResponseEntity <Boolean> delete(@PathVariable Environment p) {
-        boolean pr= environmentService.delete(p.getId());
+    public ResponseEntity <Boolean> delete(@PathVariable Long id) {
+        boolean pr= environmentService.delete(id);
         return ResponseEntity.ok().body(pr);
     }
     @PostMapping(value="/create/{Environment e}", produces ={"application/json","application/xml"})
