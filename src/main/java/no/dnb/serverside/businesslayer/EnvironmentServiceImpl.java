@@ -25,15 +25,9 @@ public class EnvironmentServiceImpl implements EnvironmentService {
     public EnvironmentServiceImpl(@Qualifier("dataRepositoryH2") EnvironmentRepository repository) {
         this.repository = repository;
 
-
-        //Date date = new Date();
-        //Timestamp timestamp2 = new Timestamp(date.getTime());
-
-        //configRepository.save(new ConfigData( -1,devEnvironment,"Connection:","wifi.dnb.no",timestamp2));
-
     }
     @Override
-    public Collection<Environment> getAllProducts() {
+    public Collection<Environment> getAllEnvironments() {
         return repository.getAllEnvironments();
     }
     @Override

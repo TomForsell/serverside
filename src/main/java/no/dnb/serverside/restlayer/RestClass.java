@@ -1,7 +1,6 @@
 package no.dnb.serverside.restlayer;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import no.dnb.serverside.datalayer.ConfigDataRepository;
 import no.dnb.serverside.businesslayer.EnvironmentService;
 import no.dnb.serverside.models.ConfigData;
@@ -10,11 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -25,17 +19,14 @@ public class RestClass {
     @Autowired
     private EnvironmentService environmentService;
 
-
     @Autowired
     private ConfigDataRepository configDataRepository;
 
-
     @GetMapping(value="/all", produces={"application/json","application/xml"})
     public ResponseEntity<Collection<Environment>>getAllProducts() {
-        Collection<Environment> environments = environmentService.getAllProducts();
+        Collection<Environment> environments = environmentService.getAllEnvironments();
         return ResponseEntity.ok().body(environments);
     }
-
     @GetMapping(value="/getID/{id}", produces={"application/json","application/xml"})
     public ResponseEntity <Environment> read(@PathVariable long id) {
         Environment environment = environmentService.read(id);
@@ -48,9 +39,20 @@ public class RestClass {
         return ResponseEntity.ok().body(result);
     }
     @DeleteMapping(value="/delete/{id}", produces={"application/json","application/xml"})
-    public ResponseEntity <Environment> create(@PathVariable Environment p) {
-        Environment pr = environmentService.create(p);
+    public ResponseEntity <Boolean> delete(@PathVariable Environment p) {
+        boolean pr= environmentService.delete(p.getId());
         return ResponseEntity.ok().body(pr);
+    }
+    @PostMapping(value="/create/{Environment e}", produces ={"application/json","application/xml"})
+    public ResponseEntity<Environment> create(@PathVariable Environment e){
+        Environment re = environmentService.create(e);
+        if(re.equals(e)){
+            return ResponseEntity.ok().build();
+        }
+        else
+        {
+            return ResponseEntity.notFound().build();
+        }
     }
     @PutMapping(
             value="/addConfigDataforEnvironments/{ENVIRONMENT_ID}",
@@ -69,8 +71,5 @@ public class RestClass {
             return ResponseEntity.ok().build();
         }
     }
-
-
-
 
 }
