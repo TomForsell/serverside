@@ -2,8 +2,6 @@ package no.dnb.serverside.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -26,7 +24,7 @@ public class ConfigData {
     private Environment environment;
 
     private String keyName;
-    private String value;
+    private String configValue;
     private Timestamp ts;
 
     public ConfigData() { }
@@ -51,8 +49,8 @@ public class ConfigData {
         return keyName;
     }
 
-    public String getValue() {
-        return value;
+    public String getConfigValue() {
+        return configValue;
     }
 
     public Timestamp getTs() {
@@ -71,8 +69,8 @@ public class ConfigData {
         this.keyName = keyName;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setConfigValue(String value) {
+        this.configValue = value;
     }
 
     public void setTs(Timestamp ts) {
