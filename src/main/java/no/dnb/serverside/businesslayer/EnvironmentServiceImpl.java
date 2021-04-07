@@ -19,21 +19,16 @@ import java.util.Date;
 @Service
 public class EnvironmentServiceImpl implements EnvironmentService {
     private EnvironmentRepository repository;
-    private ConfigDataRepository configRepository;
+   // private ConfigDataRepository configRepository;
 
     @Autowired
     public EnvironmentServiceImpl(@Qualifier("dataRepositoryH2") EnvironmentRepository repository) {
         this.repository = repository;
 
 
-        Date date = new Date();
-        Timestamp timestamp2 = new Timestamp(date.getTime());
+        //Date date = new Date();
+        //Timestamp timestamp2 = new Timestamp(date.getTime());
 
-
-        Environment devEnvironment = new Environment(-1,"Development");
-        repository.create(devEnvironment);
-        repository.create(new Environment(-1,"Disaster Recovery"));
-        repository.create(new Environment(-1,"Production"));
         //configRepository.save(new ConfigData( -1,devEnvironment,"Connection:","wifi.dnb.no",timestamp2));
 
     }

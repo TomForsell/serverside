@@ -24,16 +24,9 @@ public class Environment {
 
     public Environment(){}
 
-    public Environment(String description, double price, long inStock){
-        this(-1, description);
-
-    }
-
     public Environment(long id, String description) {
         this.id = id;
         this.description = description;
-        //this.price = price;
-        //this.inStock = inStock;
-    }
+        }
 
  }

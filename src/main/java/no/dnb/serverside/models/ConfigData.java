@@ -30,7 +30,7 @@ public class ConfigData {
     private Timestamp ts;
 
     public ConfigData() { }
-
+/*
     public ConfigData(long configID, Environment environment, String keyName, String value, Timestamp ts) {
         this.configID = configID;
         this.environment = environment;
@@ -38,7 +38,7 @@ public class ConfigData {
         this.value = value;
         this.ts = ts;
     }
-
+*/
     public long getConfigID() {
         return configID;
     }
