@@ -72,19 +72,6 @@ public class RestClass {
     }
 
 
-    @JoinColumn(name="ENVIRONMENT_ID")
-    @JsonBackReference
-    private Environment environment;
-    //test
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ConfigID = -1;
-
-    private String keyName;
-    private String value;
-    private Timestamp ts;
-
-
 
 
 }

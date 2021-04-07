@@ -63,6 +63,15 @@ public class SeedDB {
                 new Object[]{1,"Wifi Password:","password",timestamp2});
 
 
+        jdbcTemplate.update("insert into USERS(user_Name,password,isAdmin) values (?,?,?)",
+                new Object[]{"user1","userpassword",false});
+        jdbcTemplate.update("insert into USERS(user_Name,password,isAdmin) values (?,?,?)",
+                new Object[]{"user2","password2",true});
+
+
+
+
+
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, value,ts) values (?, ?, ?, ?)",
                 new Object[]{1,"Wifi connection :","dadffd.ddd.dddd",new Timestamp(date.getTime())});
