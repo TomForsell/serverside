@@ -52,7 +52,6 @@ public class RestClass {
         Environment pr = environmentService.create(p);
         return ResponseEntity.ok().body(pr);
     }
-
     @PutMapping(
             value="/addConfigDataforEnvironments/{ENVIRONMENT_ID}",
             consumes={"application/json","application/xml"},

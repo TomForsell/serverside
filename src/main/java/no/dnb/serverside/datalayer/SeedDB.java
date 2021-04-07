@@ -64,11 +64,9 @@ public class SeedDB {
 
 
         jdbcTemplate.update("insert into USERS(user_Name,password,isAdmin) values (?,?,?)",
-                new Object[]{"user1","userpassword",false});
+                new Object[]{"user1","password1",false});
         jdbcTemplate.update("insert into USERS(user_Name,password,isAdmin) values (?,?,?)",
                 new Object[]{"user2","password2",true});
-
-
 
 
 
