@@ -72,11 +72,24 @@ public class RestClass {
         }
     }
     @DeleteMapping(
-            value = {"/deleteConfigData/{id}"},
+            value = {"/deleteConfigForEnvironment/{id}"},
             produces = {"application/json", "application/xml"}
     )
-    public ResponseEntity<Void> addConfigForEnvironment(@PathVariable long id) {
+    public ResponseEntity<Void> deleteConfigForEnvironment(@PathVariable long id) {
         configDataRepository.deleteById(id);
+
+        return ResponseEntity.ok().build();
+
+    }
+    @PutMapping(
+            value = {"/updateConfigForEnvironment/{id}"},
+            produces = {"application/json", "application/xml"}
+    )
+    public ResponseEntity<Void> updateConfigForEnvironment(@PathVariable long id, @RequestBody ConfigData configData) {
+      ConfigData myConfigData = configDataRepository.findById(id).get();
+      myConfigData.setConfigValue(configData.getConfigValue());
+      myConfigData.setKeyName(configData.getKeyName());
+      configDataRepository.save(myConfigData);
         return ResponseEntity.ok().build();
 
     }
