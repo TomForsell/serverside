@@ -43,9 +43,9 @@ public class RestClass {
         boolean pr= environmentService.delete(id);
         return ResponseEntity.ok().body(pr);
     }
-    @PostMapping(value="/create/", produces ={"application/json","application/xml"})
-    public ResponseEntity<String> create(@RequestBody String description){
-        Environment re = environmentService.create(description);
+    @PostMapping(value="/createEnvironment/", produces ={"application/json","application/xml"})
+    public ResponseEntity<Environment> create(@RequestBody Environment e){
+        Environment re = environmentService.create(e.getDescription());
         return ResponseEntity.ok().build();
     }
 
