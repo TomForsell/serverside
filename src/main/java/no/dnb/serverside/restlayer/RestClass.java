@@ -63,12 +63,12 @@ public class RestClass {
 */
 
     @PutMapping(
-            value = {"/addConfigForEnvironment/{environmentID}"},
+            value = {"/addConfigForEnvironment/{id}"},
             consumes = {"application/json", "application/xml"},
             produces = {"application/json", "application/xml"}
     )
-    public ResponseEntity<Void> addConfigForEnvironment(@PathVariable long environmentID, @RequestBody ConfigData configData) {
-        Environment environment = environmentService.read(environmentID);
+    public ResponseEntity<Void> addConfigForEnvironment(@PathVariable long id, @RequestBody ConfigData configData) {
+        Environment environment = environmentService.read(id);
         String keyName = configData.getKeyName();
         String configValue = configData.getConfigValue();
         ConfigData newConfigData = new ConfigData(environment,keyName,configValue);
