@@ -34,7 +34,7 @@ public class RestClass {
         return ResponseEntity.ok().body(environment);
     }
 
-    @PutMapping(value = "/update/{id}", produces = {"application/json", "application/xml"})
+    @PutMapping(value = "/updateEnvironment/{id}", produces = {"application/json", "application/xml"})
     public ResponseEntity<Boolean> update(@PathVariable long id, @RequestBody Environment environment) {
         boolean result = environmentService.update(id, environment.getDescription());
         return ResponseEntity.ok().body(result);
