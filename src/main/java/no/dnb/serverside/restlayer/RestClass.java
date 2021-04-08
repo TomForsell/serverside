@@ -42,7 +42,7 @@ public class RestClass {
     }
 
     @DeleteMapping(value = "/deleteEnvironment/{id}", produces = {"application/json", "application/xml"})
-    public ResponseEntity<Boolean> delete(@PathVariable Long id, @RequestBody Environment environment) {
+    public ResponseEntity<Boolean> delete(@PathVariable Long id) {
         boolean pr = environmentService.delete(id);
         return ResponseEntity.ok().body(pr);
     }
