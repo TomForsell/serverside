@@ -64,7 +64,6 @@ public class RestClass {
 
     @PutMapping(
             value = {"/addConfigForEnvironment/{id}"},
-            consumes = {"application/json", "application/xml"},
             produces = {"application/json", "application/xml"}
     )
     public ResponseEntity<Void> addConfigForEnvironment(@PathVariable long id, @RequestBody ConfigData configData) {
@@ -75,9 +74,10 @@ public class RestClass {
         if (environment==null) {
             return ResponseEntity.notFound().build();
         } else {
-            configData.setEnvironment(environment);
-            this.configDataRepository.save(newConfigData);
+            //configData.setEnvironment(environment);
+            configDataRepository.save(newConfigData);
             return ResponseEntity.ok().build();
+
         }
     }
 

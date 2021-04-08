@@ -23,7 +23,6 @@ public class ConfigData {
     @JoinColumn(name="ENVIRONMENT_ID")
     @JsonBackReference
     private Environment environment;
-
     private String keyName;
     private String configValue;
     private Timestamp ts;
