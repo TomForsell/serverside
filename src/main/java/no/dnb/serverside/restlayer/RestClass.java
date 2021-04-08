@@ -49,7 +49,8 @@ public class RestClass {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping(
+/*
+    @PostMapping(
             value="/save/{id}", produces={"application/json","application/xml"}
     )
     public ResponseEntity<Void> save(@PathVariable long environmentID, @RequestBody String keyName, String configValue ) {
@@ -59,9 +60,8 @@ public class RestClass {
         return ResponseEntity.ok().build();
 
     }
+*/
 
-
-/*
     @PutMapping(
             value = {"/addConfigForEnvironment/{environmentID}"},
             consumes = {"application/json", "application/xml"},
@@ -69,16 +69,18 @@ public class RestClass {
     )
     public ResponseEntity<Void> addConfigForEnvironment(@PathVariable long environmentID, @RequestBody ConfigData configData) {
         Environment environment = environmentService.read(environmentID);
+        String keyName = configData.getKeyName();
+        String configValue = configData.getConfigValue();
+        ConfigData newConfigData = new ConfigData(environment,keyName,configValue);
         if (environment==null) {
             return ResponseEntity.notFound().build();
         } else {
             configData.setEnvironment(environment);
-            this.configDataRepository.save(configData);
+            this.configDataRepository.save(newConfigData);
             return ResponseEntity.ok().build();
         }
     }
 
- */
 
 }
 
