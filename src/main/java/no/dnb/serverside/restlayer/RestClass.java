@@ -22,45 +22,36 @@ public class RestClass {
     @Autowired
     private ConfigDataRepository configDataRepository;
 
-    @GetMapping(value="/all", produces={"application/json","application/xml"})
-    public ResponseEntity<Collection<Environment>>getAllEnvironments() {
+    @GetMapping(value = "/all", produces = {"application/json", "application/xml"})
+    public ResponseEntity<Collection<Environment>> getAllEnvironments() {
         Collection<Environment> environments = environmentService.getAllEnvironments();
         return ResponseEntity.ok().body(environments);
     }
-    @GetMapping(value="/getID/{id}", produces={"application/json","application/xml"})
-    public ResponseEntity <Environment> read(@PathVariable long id) {
+
+    @GetMapping(value = "/getID/{id}", produces = {"application/json", "application/xml"})
+    public ResponseEntity<Environment> read(@PathVariable long id) {
         Environment environment = environmentService.read(id);
         return ResponseEntity.ok().body(environment);
     }
 
-    @PutMapping(value="/update/{id}", produces={"application/json","application/xml"})
-    public ResponseEntity <Boolean> update(@PathVariable long id,@RequestBody String description) {
-        boolean result = environmentService.update(id,description);
+    @PutMapping(value = "/update/{id}", produces = {"application/json", "application/xml"})
+    public ResponseEntity<Boolean> update(@PathVariable long id, @RequestBody String description) {
+        boolean result = environmentService.update(id, description);
         return ResponseEntity.ok().body(result);
     }
-    @DeleteMapping(value="/delete/{id}", produces={"application/json","application/xml"})
-    public ResponseEntity <Boolean> delete(@PathVariable Long id) {
-        boolean pr= environmentService.delete(id);
+
+    @DeleteMapping(value = "/delete/{id}", produces = {"application/json", "application/xml"})
+    public ResponseEntity<Boolean> delete(@PathVariable Long id) {
+        boolean pr = environmentService.delete(id);
         return ResponseEntity.ok().body(pr);
     }
-    @PostMapping(value="/createEnvironment/", produces ={"application/json","application/xml"})
-    public ResponseEntity<Environment> create(@RequestBody Environment e){
+
+    @PostMapping(value = "/createEnvironment/", produces = {"application/json", "application/xml"})
+    public ResponseEntity<Environment> create(@RequestBody Environment e) {
         Environment re = environmentService.create(e.getDescription());
         return ResponseEntity.ok().build();
     }
 
-/*
-    @PostMapping(
-            value="/save/{id}", produces={"application/json","application/xml"}
-    )
-    public ResponseEntity<Void> save(@PathVariable long environmentID, @RequestBody String keyName, String configValue ) {
-        Environment re = environmentService.read(environmentID);
-        ConfigData newConfigData = new ConfigData(re,keyName,configValue);
-        configDataRepository.save(newConfigData);
-        return ResponseEntity.ok().build();
-
-    }
-*/
 
     @PutMapping(
             value = {"/addConfigForEnvironment/{id}"},
@@ -70,8 +61,8 @@ public class RestClass {
         Environment environment = environmentService.read(id);
         String keyName = configData.getKeyName();
         String configValue = configData.getConfigValue();
-        ConfigData newConfigData = new ConfigData(environment,keyName,configValue);
-        if (environment==null) {
+        ConfigData newConfigData = new ConfigData(environment, keyName, configValue);
+        if (environment == null) {
             return ResponseEntity.notFound().build();
         } else {
             //configData.setEnvironment(environment);
@@ -79,6 +70,15 @@ public class RestClass {
             return ResponseEntity.ok().build();
 
         }
+    }
+    @DeleteMapping(
+            value = {"/deleteConfigData/{id}"},
+            produces = {"application/json", "application/xml"}
+    )
+    public ResponseEntity<Void> addConfigForEnvironment(@PathVariable long id) {
+        configDataRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+
     }
 
 
