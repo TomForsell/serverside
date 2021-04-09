@@ -2,7 +2,9 @@ package no.dnb.serverside.datalayer;
 
 import no.dnb.serverside.models.ConfigData;
 import no.dnb.serverside.models.Environment;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import javax.persistence.*;
 import javax.transaction.Transactional;
@@ -14,6 +16,9 @@ public class DataRepositoryH2 implements EnvironmentRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
     @Override
     public Collection<Environment> getAllEnvironments() {
         String sql = "SELECT e FROM Environment e";
@@ -23,7 +28,6 @@ public class DataRepositoryH2 implements EnvironmentRepository {
     @Transactional
     @Override
     public Environment create(Environment e) {
-
         if(e.getId() != -1) {
             throw new IllegalArgumentException("Product id must be -1 to be inserted");
         }
@@ -58,10 +62,18 @@ public class DataRepositoryH2 implements EnvironmentRepository {
         else
             return false;
 
-    }   /*
+    }
+    @Transactional
+    public void  deleteConfigOnEnvironment(long id){
+
+        String sql = "DELETE FROM CONFIGDATA WHERE CONFIGID=" + id;
+
+        jdbcTemplate.execute(sql);
+    }
+    /*
         @Query(DELETE FROM CONFIGDATA WHERE CONFIGID=?)
 
-        //String sql = "DELETE FROM CONFIGDATA WHERE CONFIGID=" + id;
+        String sql = "DELETE FROM CONFIGDATA WHERE CONFIGID=" + id;
 
         entityManager.createQuery(sql, ConfigData.class);
 

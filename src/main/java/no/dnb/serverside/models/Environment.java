@@ -1,4 +1,5 @@
 package no.dnb.serverside.models;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.Getter;
@@ -23,8 +24,6 @@ public class Environment {
    // private long inStock;
 
     @OneToMany(mappedBy="environment", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-    @JsonManagedReference
-   //private ConfigData configData;
     private List<ConfigData> configDataList;
 
     public Environment(){}

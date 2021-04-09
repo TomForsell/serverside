@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/assignment")
@@ -24,7 +25,7 @@ public class RestClass {
     private ConfigDataRepository configDataRepository;
 
     @Autowired
-    private ConfigRepo myConfigRepo;
+    private DataRepositoryH2 dataRepositoryH2;
 
 
 
@@ -83,9 +84,15 @@ public class RestClass {
             produces = {"application/json", "application/xml"}
     )
     public ResponseEntity<Void> deleteConfigForEnvironment(@PathVariable long id) {
+        dataRepositoryH2.deleteConfigOnEnvironment(id);
         //configDataServiceImpl.deleteConfigurationById(id);
-
-        configDataRepository.deleteById(id);
+/*
+       Optional<ConfigData> myConfigData =  configDataRepository.findById(id);
+       ConfigData c = myConfigData.get();
+       configDataRepository.delete(c);
+ */
+        //myConfigRepo.deleteConfigData(id);
+       //configDataRepository.deleteById(id);
        // myConfigRepo.deleteConfigData(id);
         //dataRepositoryH2.emergencyDeleteOfConfigData(id);
       // Environment myEnvironment =  environmentService.read(1);

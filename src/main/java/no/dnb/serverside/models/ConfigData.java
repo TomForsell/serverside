@@ -1,6 +1,4 @@
 package no.dnb.serverside.models;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
@@ -19,9 +17,10 @@ public class ConfigData {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long configID = -1;
 
+
+
     @ManyToOne
     @JoinColumn(name="ENVIRONMENT_ID")
-    @JsonBackReference
     private Environment environment;
     private String keyName;
     private String configValue;

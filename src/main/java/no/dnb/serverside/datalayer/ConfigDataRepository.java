@@ -7,11 +7,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface ConfigDataRepository extends CrudRepository<ConfigData,Long>{
     List<ConfigData> findByEnvironment(Environment environment);
-   // @Query("DELETE FROM CONFIGDATA c WHERE id=?1")
-    //void deleteById (Long id);
-
 }
 
