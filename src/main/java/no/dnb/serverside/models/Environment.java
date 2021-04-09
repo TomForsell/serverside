@@ -22,10 +22,10 @@ public class Environment {
     //private double price;
    // private long inStock;
 
-   // @OneToMany(mappedBy="environment", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-   // @JsonManagedReference
-   // private ConfigData configData;
-    //private List<ConfigData> configDataList;
+    @OneToMany(mappedBy="environment", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JsonManagedReference
+   //private ConfigData configData;
+    private List<ConfigData> configDataList;
 
     public Environment(){}
 

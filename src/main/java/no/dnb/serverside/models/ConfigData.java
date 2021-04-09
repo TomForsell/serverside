@@ -30,7 +30,6 @@ public class ConfigData {
     private Date date = new Date();
     public ConfigData() { }
 
-
     public ConfigData(Environment environment, String keyName, String configValue) {
         this.id = id;
         this.environment = environment;
@@ -59,8 +58,8 @@ public class ConfigData {
         return ts;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(long configID) {
+        this.id = configID;
     }
 
     public void setEnvironment(Environment environment) {
