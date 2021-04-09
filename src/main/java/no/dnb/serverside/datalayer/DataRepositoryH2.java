@@ -1,6 +1,8 @@
 package no.dnb.serverside.datalayer;
 
+import no.dnb.serverside.models.ConfigData;
 import no.dnb.serverside.models.Environment;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import javax.persistence.*;
 import javax.transaction.Transactional;
@@ -56,7 +58,16 @@ public class DataRepositoryH2 implements EnvironmentRepository {
         else
             return false;
 
-    }
+    }   /*
+        @Query(DELETE FROM CONFIGDATA WHERE CONFIGID=?)
+
+        //String sql = "DELETE FROM CONFIGDATA WHERE CONFIGID=" + id;
+
+        entityManager.createQuery(sql, ConfigData.class);
+
+ */
+
+
 
 }
 

@@ -60,7 +60,7 @@ public class SeedDB {
 
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi Password:","password",timestamp2});
+                new Object[]{1,"Wifi Password","password",timestamp2});
 
 
         jdbcTemplate.update("insert into USERS(user_Name,password,isAdmin) values (?,?,?)",
@@ -72,43 +72,43 @@ public class SeedDB {
 
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi connection :","dadffd.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{1,"Wifi connection","dadffd.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi connection2 :","dadfddsfd.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{1,"Wifi connection2","dadfddsfd.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi connection3 :","dadfsdsfd.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{1,"Wifi connection3","dadfsdsfd.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi connection4 :","sds.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{1,"Wifi connection4","sds.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi connection5 :","dsdsds.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{1,"Wifi connection5","dsdsds.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi connection6 :","sdsdssd.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{1,"Wifi connection6","sdsdssd.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi connection7 :","ffff.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{1,"Wifi connection7","ffff.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi connection8 :","fdfdf.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{1,"Wifi connection8","fdfdf.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi connection56 :","dfdfdfdgghh.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{1,"Wifi connection56","dfdfdfdgghh.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi connection9 :","reeeee.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{1,"Wifi connection9","reeeee.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi connection10 :","rererere.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{1,"Wifi connection10","rererere.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi connection11 :","ererer.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{1,"Wifi connection11","ererer.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi connection12 :","ererere.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{1,"Wifi connection12","ererere.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
                 new Object[]{1,"Wifi connection13 :","dadererffd.ddd.dddd",new Timestamp(date.getTime())});
@@ -117,23 +117,23 @@ public class SeedDB {
                 new Object[]{1,"Wifi connection14 :","ererere.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi connection15 :","dadfererefd.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{1,"Wifi connection15","dadfererefd.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi connection16 :","ererer.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{1,"Wifi connection16","ererer.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{1,"Wifi connection34 :","dadererereffd.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{1,"Wifi connection34","dadererereffd.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{2,"Wifi connection :","dadddffd.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{2,"Wifi connection","dadddffd.ddd.dddd",new Timestamp(date.getTime())});
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{3,"Wifi connection :","dadddffd.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{3,"Wifi connection","dadddffd.ddd.dddd",new Timestamp(date.getTime())});
 
         jdbcTemplate.update(
                 "insert into CONFIGDATA (ENVIRONMENT_ID, key_name, config_value,ts) values (?, ?, ?, ?)",
-                new Object[]{4,"Wifi connection :","daddddddffd.ddd.dddd",new Timestamp(date.getTime())});
+                new Object[]{4,"Wifi connection","daddddddffd.ddd.dddd",new Timestamp(date.getTime())});
 
     }
 }

@@ -3,6 +3,8 @@ package no.dnb.serverside.restlayer;
 
 import no.dnb.serverside.datalayer.ConfigDataRepository;
 import no.dnb.serverside.businesslayer.EnvironmentService;
+import no.dnb.serverside.datalayer.ConfigRepo;
+import no.dnb.serverside.datalayer.DataRepositoryH2;
 import no.dnb.serverside.models.ConfigData;
 import no.dnb.serverside.models.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/assignment")
@@ -21,6 +22,11 @@ public class RestClass {
 
     @Autowired
     private ConfigDataRepository configDataRepository;
+
+    @Autowired
+    private ConfigRepo myConfigRepo;
+
+
 
     @GetMapping(value = "/all", produces = {"application/json", "application/xml"})
     public ResponseEntity<Collection<Environment>> getAllEnvironments() {
@@ -73,12 +79,17 @@ public class RestClass {
         }
     }
     @DeleteMapping(
-            value = {"/deleteConfigForEnvironment/{id}"},
+            value = "/deleteConfigForEnvironment/{id}",
             produces = {"application/json", "application/xml"}
     )
     public ResponseEntity<Void> deleteConfigForEnvironment(@PathVariable long id) {
-        configDataRepository.deleteById(id);
+        //configDataServiceImpl.deleteConfigurationById(id);
 
+        configDataRepository.deleteById(id);
+       // myConfigRepo.deleteConfigData(id);
+        //dataRepositoryH2.emergencyDeleteOfConfigData(id);
+      // Environment myEnvironment =  environmentService.read(1);
+     //  myEnvironment.deleteConfigElement(1);
         return ResponseEntity.ok().build();
 
     }

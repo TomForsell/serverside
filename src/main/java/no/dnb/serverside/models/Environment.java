@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
+import no.dnb.serverside.models.ConfigData;
 import javax.persistence.*;
 import java.util.List;
 
@@ -22,9 +22,10 @@ public class Environment {
     //private double price;
    // private long inStock;
 
-    @OneToMany(mappedBy="environment", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-    @JsonManagedReference
-    private List<ConfigData> configDataList;
+   // @OneToMany(mappedBy="environment", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+   // @JsonManagedReference
+   // private ConfigData configData;
+    //private List<ConfigData> configDataList;
 
     public Environment(){}
 
@@ -33,6 +34,5 @@ public class Environment {
         this.id = id;
         this.description = description;
         }
-
 
  }

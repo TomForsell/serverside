@@ -17,7 +17,7 @@ public class ConfigData {
 //test
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long configID = -1;
+    private long id = -1;
 
     @ManyToOne
     @JoinColumn(name="ENVIRONMENT_ID")
@@ -30,16 +30,17 @@ public class ConfigData {
     private Date date = new Date();
     public ConfigData() { }
 
+
     public ConfigData(Environment environment, String keyName, String configValue) {
-        this.configID = configID;
+        this.id = id;
         this.environment = environment;
         this.keyName = keyName;
         this.configValue = configValue;
         this.ts = new Timestamp(date.getTime());
     }
 
-    public long getConfigID() {
-        return configID;
+    public long getId() {
+        return id;
     }
 
     public Environment getEnvironment() {
@@ -58,8 +59,8 @@ public class ConfigData {
         return ts;
     }
 
-    public void setConfigID(long configID) {
-        this.configID = configID;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setEnvironment(Environment environment) {
