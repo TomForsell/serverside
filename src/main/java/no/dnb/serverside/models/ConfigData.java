@@ -1,8 +1,9 @@
 package no.dnb.serverside.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -15,11 +16,9 @@ import java.util.Date;
 @Entity@Table(name="CONFIGDATA")
 public class ConfigData {
 
-//test
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long configID = -1;
-
 
 
     @ManyToOne
@@ -80,4 +79,6 @@ public class ConfigData {
     public void setTs(Timestamp ts) {
         this.ts = ts;
     }
+
+
 }

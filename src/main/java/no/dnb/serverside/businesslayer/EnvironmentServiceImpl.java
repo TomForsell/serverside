@@ -1,25 +1,18 @@
 package no.dnb.serverside.businesslayer;
 import lombok.Getter;
 import lombok.Setter;
-import no.dnb.serverside.datalayer.ConfigDataRepository;
 import no.dnb.serverside.datalayer.EnvironmentRepository;
-import no.dnb.serverside.models.ConfigData;
 import no.dnb.serverside.models.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-
-import java.sql.Timestamp;
 import java.util.Collection;
-import java.util.Date;
 
 @Getter
 @Setter
 @Service
 public class EnvironmentServiceImpl implements EnvironmentService {
     private EnvironmentRepository repository;
-   // private ConfigDataRepository configRepository;
 
     @Autowired
     public EnvironmentServiceImpl(@Qualifier("dataRepositoryH2") EnvironmentRepository repository) {

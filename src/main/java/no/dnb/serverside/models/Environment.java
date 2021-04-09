@@ -11,6 +11,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@ToString
 @Entity
 @Table(name="ENVIRONMENTS")
 @Data
@@ -20,8 +21,6 @@ public class Environment {
     private long id = -1;
 
     private String description;
-    //private double price;
-   // private long inStock;
 
     @OneToMany(mappedBy="environment", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     @JsonManagedReference

@@ -1,9 +1,6 @@
 package no.dnb.serverside.restlayer;
-
-
 import no.dnb.serverside.datalayer.ConfigDataRepository;
 import no.dnb.serverside.businesslayer.EnvironmentService;
-import no.dnb.serverside.datalayer.ConfigRepo;
 import no.dnb.serverside.datalayer.DataRepositoryH2;
 import no.dnb.serverside.models.ConfigData;
 import no.dnb.serverside.models.Environment;
@@ -12,12 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/assignment")
 @CrossOrigin
-public class RestClass {
+public class EnvironmentController {
     @Autowired
     private EnvironmentService environmentService;
 
@@ -73,7 +69,6 @@ public class RestClass {
         if (environment == null) {
             return ResponseEntity.notFound().build();
         } else {
-            //configData.setEnvironment(environment);
             configDataRepository.save(newConfigData);
             return ResponseEntity.ok().build();
 
@@ -85,18 +80,6 @@ public class RestClass {
     )
     public ResponseEntity<Void> deleteConfigForEnvironment(@PathVariable long id) {
         dataRepositoryH2.deleteConfigOnEnvironment(id);
-        //configDataServiceImpl.deleteConfigurationById(id);
-/*
-       Optional<ConfigData> myConfigData =  configDataRepository.findById(id);
-       ConfigData c = myConfigData.get();
-       configDataRepository.delete(c);
- */
-        //myConfigRepo.deleteConfigData(id);
-       //configDataRepository.deleteById(id);
-       // myConfigRepo.deleteConfigData(id);
-        //dataRepositoryH2.emergencyDeleteOfConfigData(id);
-      // Environment myEnvironment =  environmentService.read(1);
-     //  myEnvironment.deleteConfigElement(1);
         return ResponseEntity.ok().build();
 
     }
@@ -110,7 +93,6 @@ public class RestClass {
       myConfigData.setKeyName(configData.getKeyName());
       configDataRepository.save(myConfigData);
         return ResponseEntity.ok().build();
-
     }
 
 

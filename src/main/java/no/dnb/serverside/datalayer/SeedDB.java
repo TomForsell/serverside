@@ -1,13 +1,9 @@
 package no.dnb.serverside.datalayer;
 
-import no.dnb.serverside.datalayer.ConfigDataRepository;
-import no.dnb.serverside.models.ConfigData;
-import no.dnb.serverside.models.Environment;
 import org.springframework.stereotype.Component;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.sql.Timestamp;
