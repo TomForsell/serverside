@@ -24,6 +24,7 @@ public class Environment {
    // private long inStock;
 
     @OneToMany(mappedBy="environment", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JsonManagedReference
     private List<ConfigData> configDataList;
 
     public Environment(){}
