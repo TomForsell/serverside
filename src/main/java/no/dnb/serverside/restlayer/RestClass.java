@@ -98,7 +98,7 @@ public class RestClass {
             produces = {"application/json", "application/xml"}
     )
     public ResponseEntity<Void> updateConfigForEnvironment(@PathVariable long id, @RequestBody ConfigData configData) {
-      ConfigData myConfigData = configDataRepository.findById(id).get();
+      ConfigData myConfigData = configDataRepository.findById(configData.getConfigID()).get();
       myConfigData.setConfigValue(configData.getConfigValue());
       myConfigData.setKeyName(configData.getKeyName());
       configDataRepository.save(myConfigData);
