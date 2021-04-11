@@ -78,8 +78,8 @@ public class EnvironmentController {
             value = "/deleteConfigForEnvironment/{id}",
             produces = {"application/json", "application/xml"}
     )
-    public ResponseEntity<Void> deleteConfigForEnvironment(@PathVariable long id) {
-        dataRepositoryH2.deleteConfigOnEnvironment(id);
+    public ResponseEntity<Void> deleteConfigForEnvironment(@PathVariable long id, @org.jetbrains.annotations.NotNull @RequestBody ConfigData configData) {
+        dataRepositoryH2.deleteConfigOnEnvironment(configData.getConfigID());
         return ResponseEntity.ok().build();
 
     }
