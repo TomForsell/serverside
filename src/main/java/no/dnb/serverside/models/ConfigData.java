@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -27,6 +28,8 @@ public class ConfigData {
     private Environment environment;
     private String keyName;
     private String configValue;
+
+    @UpdateTimestamp
     private Timestamp ts;
 
     private Date date = new Date();
