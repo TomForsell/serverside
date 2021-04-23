@@ -5,10 +5,15 @@ import no.dnb.serverside.datalayer.DataRepositoryH2;
 import no.dnb.serverside.models.ConfigData;
 import no.dnb.serverside.models.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/assignment")
@@ -25,42 +30,45 @@ public class EnvironmentController {
 
 
 
-    @GetMapping(value = "/all", produces = {"application/json", "application/xml"})
+    @GetMapping(value = "/getAllEnvironments", produces = {"application/json", "application/xml"})
     public ResponseEntity<Collection<Environment>> getAllEnvironments() {
         Collection<Environment> environments = environmentService.getAllEnvironments();
         return ResponseEntity.ok().body(environments);
     }
 
-    @GetMapping(value = "/getID/{id}", produces = {"application/json", "application/xml"})
-    public ResponseEntity<Environment> read(@PathVariable long id) {
+    @GetMapping(value = "/getEnvironment/{id}", produces = {"application/json", "application/xml"})
+    public ResponseEntity<Environment> getEnvironment(@PathVariable long id) {
         Environment environment = environmentService.read(id);
         return ResponseEntity.ok().body(environment);
     }
 
     @PutMapping(value = "/updateEnvironment/{id}", produces = {"application/json", "application/xml"})
-    public ResponseEntity<Boolean> update(@PathVariable long id, @RequestBody Environment environment) {
+    public ResponseEntity<Boolean> updateEnvironment(@PathVariable long id, @RequestBody Environment environment) {
         String description = environment.getDescription();
         boolean result = environmentService.update(id, description);
         return ResponseEntity.ok().body(result);
     }
 
     @DeleteMapping(value = "/deleteEnvironment/{id}", produces = {"application/json", "application/xml"})
-    public ResponseEntity<Boolean> delete(@PathVariable Long id) {
+    public ResponseEntity<Boolean> deleteEnvironment(@PathVariable Long id) {
         boolean pr = environmentService.delete(id);
         return ResponseEntity.ok().body(pr);
     }
 
-    @PostMapping(value = "/createEnvironment/", produces = {"application/json", "application/xml"})
-    public ResponseEntity<Environment> create(@RequestBody Environment e) {
+    @PostMapping(value = "/addEnvironment/", produces = {"application/json", "application/xml"})
+    public ResponseEntity<Environment> addEnvironment(@RequestBody Environment e) {
         Environment re = environmentService.create(e.getDescription());
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping(value = "/getConfigData/{id}", produces = {"application/json", "application/xml"})
+    public ResponseEntity<List<ConfigData>> getConfigData (@PathVariable long id) {
+        Pageable pageable = PageRequest.of(0, 5);
+        Page<ConfigData> page = configDataRepository.findAllConfigData(id, pageable);
+        return ResponseEntity.ok().body(page.getContent());
+    }
 
-    @PutMapping(
-            value = {"/addConfigForEnvironment/{id}"},
-            produces = {"application/json", "application/xml"}
-    )
+    @PutMapping(value = {"/addConfigForEnvironment/{id}"}, produces = {"application/json", "application/xml"})
     public ResponseEntity<Void> addConfigForEnvironment(@PathVariable long id, @RequestBody ConfigData configData) {
         Environment environment = environmentService.read(id);
         String keyName = configData.getKeyName();
@@ -74,19 +82,13 @@ public class EnvironmentController {
 
         }
     }
-    @DeleteMapping(
-            value = "/deleteConfigForEnvironment/{id}",
-            produces = {"application/json", "application/xml"}
-    )
+    @DeleteMapping(value = "/deleteConfigForEnvironment/{id}", produces = {"application/json", "application/xml"})
     public ResponseEntity<Void> deleteConfigForEnvironment(@PathVariable long id, @org.jetbrains.annotations.NotNull @RequestBody ConfigData configData) {
         dataRepositoryH2.deleteConfigOnEnvironment(configData.getConfigID());
         return ResponseEntity.ok().build();
 
     }
-    @PutMapping(
-            value = {"/updateConfigForEnvironment/{id}"},
-            produces = {"application/json", "application/xml"}
-    )
+    @PutMapping(value = {"/updateConfigForEnvironment/{id}"}, produces = {"application/json", "application/xml"})
     public ResponseEntity<Void> updateConfigForEnvironment(@PathVariable long id, @RequestBody ConfigData configData) {
       ConfigData myConfigData = configDataRepository.findById(configData.getConfigID()).get();
       myConfigData.setConfigValue(configData.getConfigValue());
