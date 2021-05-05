@@ -11,6 +11,7 @@ import java.util.Collection;
 
 @Repository
 public class DataRepositoryH2 implements EnvironmentRepository {
+
     @PersistenceContext
     private EntityManager entityManager;
 
