@@ -10,15 +10,16 @@ import javax.persistence.*;
 @Setter
 @ToString
 @Entity
-@Table(name="USERS")
+@Table(name="users")
 @Data
 public class Users {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id = -1;
-   private  String userName;
-   private  String password;
-   private boolean isadmin;
+    private  String userName;
+    private  String password;
+    private boolean isadmin = false;
 
     public Users() {
     }

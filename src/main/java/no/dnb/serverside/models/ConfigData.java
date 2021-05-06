@@ -14,7 +14,7 @@ import java.util.Date;
 
 @EqualsAndHashCode
 @ToString
-@Entity@Table(name="CONFIGDATA")
+@Entity@Table(name="configdata")
 public class ConfigData {
 
     @Id
@@ -23,7 +23,7 @@ public class ConfigData {
 
 
     @ManyToOne
-    @JoinColumn(name="ENVIRONMENT_ID")
+    @JoinColumn(name="environment_id")
     @JsonBackReference
     private Environment environment;
     private String keyName;

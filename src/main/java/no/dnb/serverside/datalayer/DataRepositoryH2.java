@@ -64,7 +64,7 @@ public class DataRepositoryH2 implements EnvironmentRepository {
     }
     @Transactional
     public void  deleteConfigOnEnvironment(long id){
-        String sql = "DELETE FROM CONFIGDATA WHERE CONFIGID=" + id;
+        String sql = "DELETE FROM configdata WHERE configid=" + id;
         jdbcTemplate.execute(sql);
     }
 

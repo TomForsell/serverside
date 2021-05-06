@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @ToString
 @Entity
-@Table(name="ENVIRONMENTS")
+@Table(name="environments")
 @Data
 public class Environment {
     @Id
