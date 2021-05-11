@@ -61,12 +61,14 @@ public class EnvironmentController {
         return ResponseEntity.ok().build();
     }
 
+/**
     @GetMapping(value = "/getConfigData/{id}", produces = {"application/json", "application/xml"})
     public ResponseEntity<List<ConfigData>> getConfigData (@PathVariable long id) {
         Pageable pageable = PageRequest.of(0, 5);
-        Page<ConfigData> page = configDataRepository.findAllConfigData(id, pageable);
-        return ResponseEntity.ok().body(page.getContent());
+        Page<ConfigData> configDataPage = configDataRepository.findAllConfigData(id, pageable);
+        return ResponseEntity.ok().body(configDataPage.getContent());
     }
+ **/
 
     @PutMapping(value = {"/addConfigForEnvironment/{id}"}, produces = {"application/json", "application/xml"})
     public ResponseEntity<Void> addConfigForEnvironment(@PathVariable long id, @RequestBody ConfigData configData) {
